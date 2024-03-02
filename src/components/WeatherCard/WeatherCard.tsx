@@ -1,10 +1,7 @@
 import Image from "next/image";
+import { Weather } from "@/lib/types/types";
 
-type WeatherData = {
-  success: string;
-}
-
-export function WeatherCard({ weatherData }: { weatherData: WeatherData }) {
+export function WeatherCard({ weatherData }: { weatherData: Weather }) {
   return (
     <section>
       <Image
@@ -15,7 +12,7 @@ export function WeatherCard({ weatherData }: { weatherData: WeatherData }) {
         loading="lazy"
         className="w-full h-[600px] opacity-90"
       />
-      <ul><li>{weatherData.success}</li></ul>
+      <ul><li>{weatherData.weather}</li></ul>
     </section>
   );
 }

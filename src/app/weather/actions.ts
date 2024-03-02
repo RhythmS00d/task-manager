@@ -1,15 +1,28 @@
 "use server";
 
+import { Params } from "@/lib/types/types";
+import axios from "axios";
+
+import { revalidatePath } from "next/cache";
+
 const URL = "http://localhost:3000/api/weather";
 
 export async function postWeatherData(formData: FormData) {
-  //   await axios.post(URL);
+  const params: Params = {
+    lon: formData.get("longitude") as string,
+    lat: formData.get("latitude") as string,
+    q: formData.get("city") as string,
+  };
+
+  const res = await axios.post(URL, params);
+
+  revalidatePath("/weather");
+
+  return res.data;
 }
 
 export async function fetchWeatherData() {
-  const res = await fetch(URL, {
-    method: "GET",
-  });
+  const res = await axios.get(URL);
 
-  return res.json();
+  return res.data;
 }

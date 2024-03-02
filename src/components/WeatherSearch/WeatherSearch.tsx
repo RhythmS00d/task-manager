@@ -12,7 +12,13 @@ export function WeatherSearch({
   return (
     <search>
       <form action={handleSearch}>
-        <input type="text" name="city" id="search" placeholder="Location" />
+        <input
+          type="text"
+          name="city"
+          id="search"
+          placeholder="Location"
+          required
+        />
         <div className="" id="filters">
           <button
             type="button"
@@ -30,6 +36,7 @@ export function WeatherSearch({
                   name="longitude"
                   id="lon"
                   placeholder="Longitude"
+                  defaultValue=""
                 />
               </li>
               <li>
@@ -39,6 +46,7 @@ export function WeatherSearch({
                   name="latitude"
                   id="lat"
                   placeholder="Latitude"
+                  defaultValue=""
                 />
               </li>
             </ul>
