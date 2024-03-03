@@ -1,8 +1,5 @@
 export type Weather = {
-  coord: {
-    lon: number;
-    lat: number;
-  };
+  city: string;
   weather: string;
   temp: {
     main: number;

@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className + " bg-primary w-2/3 mx-auto container"}>
-        <main className="">
+        <main className="rounded-md">
           <Header />
           {children}
           <Footer />

@@ -9,23 +9,28 @@ export function WeatherSearch({
 }) {
   const [showFilters, setShowFilters] = useState(false);
 
+  const inputStyle = "p-1 rounded-md text-black";
+  const buttonStyle =
+    "bg-blue-500 w-24 h-10 rounded-md text-sm hover:bg-blue-400";
+
   return (
-    <search>
-      <form action={handleSearch}>
+    <search className="p-4">
+      <form action={handleSearch} className="flex flex-col gap-3">
         <input
           type="text"
           name="city"
           id="search"
           placeholder="Location"
           required
+          className={inputStyle}
         />
         <div className="" id="filters">
           <button
             type="button"
-            className=""
+            className={buttonStyle + ""}
             onClick={() => setShowFilters((prev) => !prev)}
           >
-            show filters
+            Show filters
           </button>
           {showFilters && (
             <ul>
@@ -36,7 +41,7 @@ export function WeatherSearch({
                   name="longitude"
                   id="lon"
                   placeholder="Longitude"
-                  defaultValue=""
+                  className={inputStyle}
                 />
               </li>
               <li>
@@ -46,13 +51,15 @@ export function WeatherSearch({
                   name="latitude"
                   id="lat"
                   placeholder="Latitude"
-                  defaultValue=""
+                  className={inputStyle}
                 />
               </li>
             </ul>
           )}
         </div>
-        <button type="submit">Search</button>
+        <button type="submit" className={buttonStyle}>
+          Search
+        </button>
       </form>
     </search>
   );

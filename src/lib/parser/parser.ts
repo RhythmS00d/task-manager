@@ -2,10 +2,7 @@ import { Weather } from "../types/types";
 
 export function weatherDataParser(data: any): Weather {
   return {
-    coord: {
-      lon: data.coord.lon,
-      lat: data.coord.lat,
-    },
+    city: data.name,
     weather: data.weather[0].main,
     temp: {
       main: data.main.temp,

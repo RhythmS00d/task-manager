@@ -5,11 +5,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { weatherDataParser } from "@/lib/parser/parser";
 
 let weatherData: Weather = {
-  coord: {
-    lon: 0,
-    lat: 0,
-  },
-  weather: "Rain",
+  city: "",
+  weather: "",
   temp: {
     main: 0,
     min: 0,
@@ -23,6 +20,7 @@ let weatherData: Weather = {
 const api_url = "http://api.openweathermap.org/data/2.5/weather?";
 
 export async function GET() {
+  console.log(weatherData)
   return Response.json(weatherData);
 }
 
@@ -35,7 +33,6 @@ export async function POST(req: NextRequest, res: NextResponse) {
   const resp = await axios.get(api_url + param);
 
   weatherData = weatherDataParser(resp.data);
-  console.log(weatherData);
 
   return Response.json({ success: "Weather updated!" });
 }
