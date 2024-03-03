@@ -4,8 +4,10 @@ import { useState } from "react";
 
 export function WeatherSearch({
   handleSearch,
+  error = null,
 }: {
   handleSearch: (e: FormData) => void;
+  error: null | string;
 }) {
   const [showFilters, setShowFilters] = useState(false);
 
@@ -21,9 +23,11 @@ export function WeatherSearch({
           name="city"
           id="search"
           placeholder="Location"
-          required
           className={inputStyle}
         />
+        {error && (
+          <span className="text-red-500 text-sm">{error}! Try again</span>
+        )}
         <div className="" id="filters">
           <button
             type="button"

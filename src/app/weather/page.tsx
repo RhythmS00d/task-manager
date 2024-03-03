@@ -4,9 +4,11 @@ import { useEffect, useState } from "react";
 import { WeatherCard } from "@/components/WeatherCard";
 import { WeatherSearch } from "@/components/WeatherSearch";
 import { postWeatherData, fetchWeatherData } from "./actions";
+import { Weather } from "@/lib/types/types";
 
 export default function Weather() {
   const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
 
   const fetchInitialData = async () => {
     let weatherData = await fetchWeatherData();
@@ -16,7 +18,6 @@ export default function Weather() {
       initialWeather.set("city", "Sydney"); // Default to Sydney
       weatherData = await postWeatherData(initialWeather);
     }
-
     setData(weatherData);
   };
 
@@ -49,7 +50,14 @@ export default function Weather() {
 
   const handleSearch = async (formData: FormData) => {
     const weatherData = await postWeatherData(formData);
-    setData(weatherData); // Update state with new data
+
+    if (weatherData.error) {
+      setError(weatherData.error);
+      fetchInitialData();
+    } else {
+      setError(null)
+      setData(weatherData);
+    }
   };
 
   if (!data) {
@@ -60,7 +68,7 @@ export default function Weather() {
     <>
       <section className="flex p-4 h-full rounded-md">
         <aside className="bg-gray-800 text-white">
-          <WeatherSearch handleSearch={handleSearch} />
+          <WeatherSearch handleSearch={handleSearch} error={error} />
         </aside>
         <WeatherCard weatherData={data} />
       </section>
