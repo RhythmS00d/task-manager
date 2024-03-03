@@ -12,11 +12,12 @@ export async function postWeatherData(formData: FormData) {
     q: formData.get("city") as string,
   };
 
-  const res = await axios.post(URL, params);
-
-  // revalidatePath("/weather");
-
-  return res.data;
+  try {
+    const res = await axios.post(URL, params);
+    return res.data;
+  } catch (err) {
+    return { error: "City not found" };
+  }
 }
 
 export async function fetchWeatherData() {

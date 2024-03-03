@@ -1,7 +1,7 @@
 import axios from "axios";
 
 import { Weather } from "@/lib/types/types";
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 import { weatherDataParser } from "@/lib/parser/parser";
 
 let weatherData: Weather = {
@@ -24,7 +24,7 @@ export async function GET() {
   return Response.json(weatherData);
 }
 
-export async function POST(req: NextRequest, res: NextResponse) {
+export async function POST(req: NextRequest) {
   const params = await req.json();
   const API_KEY = process.env.weather_api_token;
 
