@@ -1,34 +1,3 @@
-// import { WeatherCard } from "@/components/WeatherCard";
-// import { WeatherSearch } from "@/components/WeatherSearch";
-
-// import { postWeatherData, fetchWeatherData } from "./actions";
-
-// export default async function Weather() {
-//   // ask user location, else return Sydney weather
-//   // if(navigator.geolocation) {
-//   //   console.log('granted')
-//   // }
-//   let data = await fetchWeatherData();
-
-//   if (data.city === "") {
-//     const initialWeather: FormData = new FormData();
-//     initialWeather.set("lon", "");
-//     initialWeather.set("lat", "");
-//     initialWeather.set("city", "Sydney");
-//     data = await postWeatherData(initialWeather);
-//   }
-
-//   return (
-//     <>
-//       <section className="flex p-4 h-full rounded-md">
-//         <aside className="bg-gray-800 text-white">
-//           <WeatherSearch handleSearch={postWeatherData} />
-//         </aside>
-//         <WeatherCard weatherData={data} />
-//       </section>
-//     </>
-//   );
-// }
 "use client";
 
 import { useEffect, useState } from "react";
