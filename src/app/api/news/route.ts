@@ -15,8 +15,6 @@ export async function POST(req: NextRequest) {
     page: reqParams.params.page
   };
 
-  console.log(params);
-
   const resp = await axios.get(api_url, { params: params });
 
   return Response.json(resp.data);
