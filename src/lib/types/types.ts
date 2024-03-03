@@ -1,6 +1,7 @@
 export type Weather = {
   city: string;
   weather: string;
+  icon: string;
   temp: {
     main: number;
     min: number;

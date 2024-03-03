@@ -4,6 +4,7 @@ export function weatherDataParser(data: any): Weather {
   return {
     city: data.name,
     weather: data.weather[0].main,
+    icon: data.weather[0].icon,
     temp: {
       main: data.main.temp,
       min: data.main.temp_min,
