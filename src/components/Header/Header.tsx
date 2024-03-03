@@ -25,7 +25,7 @@ function Nav() {
     },
     {
       name: "Other Widgets",
-      href: "/other-widgets",
+      href: "/",
     },
   ];
 

@@ -28,7 +28,7 @@ export function WeatherCard({ weatherData }: { weatherData: Weather }) {
           alt={weatherData.weather + " pic"}
           width={2000}
           height={2000}
-          className="min-w-full h-[600px] opacity-85 bg-contain bg-no-repeat"
+          className="min-w-full h-[600px] opacity-85 object-cover"
         />
         <ul className="absolute bottom-10 p-4 flex flex-col gap-2">
           <li className="text-4xl font-semibold flex gap-2 items-center justify-center">
