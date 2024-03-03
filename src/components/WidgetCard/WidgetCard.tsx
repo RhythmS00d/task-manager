@@ -1,11 +1,26 @@
 import Image from "next/image";
+import Link from "next/link";
 
-export function WidgetCard({ name }: { name: string }) {
+export function WidgetCard({
+  name,
+  imageUrl,
+}: {
+  name: string;
+  imageUrl: string;
+}) {
   return (
-    <div className="ring-2 ring-black h-fit w-1/3 p-2">
+    <div className="ring-2 ring-black w-1/3 p-2">
       <figure>
-        <Image src="" alt="" width={100} height={100} className="w-full" />
-        <figcaption>{name}</figcaption>
+        <Link href={`/${name.toLowerCase()}`}>
+          <Image
+            src={imageUrl}
+            alt="widget pic"
+            width={1000}
+            height={1000}
+            className="w-full h-[200px] object-cover"
+          />
+          <figcaption>{name}</figcaption>
+        </Link>
       </figure>
     </div>
   );
