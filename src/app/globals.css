@@ -6,3 +6,20 @@ nav,
 footer {
   font-family: "Kode Mono", sans-serif;
 }
+
+.category {
+  background-color: #ddd;
+  padding: 4px 11px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 120px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+input[type="radio"]:checked + .category {
+  border: 1px solid black;
+  background-color: #bbb;
+}

@@ -17,3 +17,26 @@ export type Params = {
   lon?: string;
   q?: string;
 };
+
+export type Data = {
+  error: string;
+};
+
+export type NewsReqParams = {
+  country: string;
+  category: string;
+  pageSize: number;
+};
+
+type Article = {
+  title: string;
+  url: string;
+  description: string;
+  urlToImage: string;
+};
+
+export type NewsResp = {
+  status: string;
+  totalResults: number;
+  articles: Article[];
+};
