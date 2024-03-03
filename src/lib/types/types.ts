@@ -40,3 +40,9 @@ export type NewsResp = {
   totalResults: number;
   articles: Article[];
 };
+
+export type Task = {
+  id: string;
+  title: string;
+  completed: boolean;
+}
