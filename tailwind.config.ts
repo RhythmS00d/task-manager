@@ -12,7 +12,8 @@ const config: Config = {
         primary: "#f1f0eb",
         button: "#f13c1f",
       },
-      textColor: {
+      animation: {
+        pulse: "pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;",
       },
     },
   },
