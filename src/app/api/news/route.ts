@@ -1,4 +1,3 @@
-import { NewsReqParams } from "@/lib/types/types";
 import axios from "axios";
 import { NextRequest } from "next/server";
 
