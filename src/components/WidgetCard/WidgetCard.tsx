@@ -9,7 +9,7 @@ export function WidgetCard({
   imageUrl: string;
 }) {
   return (
-    <div className="ring-2 ring-black w-1/3 p-2">
+    <div className="ring-2 ring-black w-1/4 p-2">
       <figure>
         <Link href={`/${name.toLowerCase()}`}>
           <Image
