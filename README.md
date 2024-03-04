@@ -2,7 +2,7 @@
 
 This app is a simple Task Dashboard which consists of few widgets such as "Task Manager", "Weather", "Quote Generator" and "News".
 
-To view the live demo: [click here](https://github.com/)
+To view the live demo: [click here](https://task-manager-eight-fawn.vercel.app)
 
 ## Features
 
