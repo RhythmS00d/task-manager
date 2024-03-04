@@ -45,4 +45,14 @@ export type Task = {
   id: string;
   title: string;
   completed: boolean;
+};
+
+export type Quote = {
+  quote: string
+  author: string;
+  category: string;
 }
+
+export type QuoteHeader = {
+  "X-Api-Key": string;
+};
