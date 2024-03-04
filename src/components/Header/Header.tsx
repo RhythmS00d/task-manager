@@ -34,6 +34,8 @@ function Nav() {
   ];
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const path = usePathname().slice(1).toUpperCase();
+
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
@@ -41,9 +43,9 @@ function Nav() {
   return (
     <>
       <h1 className="md:hidden text-lg font-semibold title">
-        {usePathname().slice(1).toUpperCase() === ""
+        {path === ""
           ? "HOME"
-          : usePathname().slice(1).toUpperCase()}
+          : path}
       </h1>
       <nav className="md:w-full h-full md:text-xl md:block flex items-center justify-center relative">
         <button
