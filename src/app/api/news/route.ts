@@ -1,3 +1,5 @@
+'use server'
+
 import axios from "axios";
 import { NextRequest } from "next/server";
 

@@ -1,3 +1,5 @@
+'use server'
+
 import { QuoteHeader } from "@/lib/types/types";
 import axios from "axios";
 
