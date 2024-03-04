@@ -2,7 +2,7 @@
 
 import axios from "axios";
 
-const URL = "http://localhost:3000/api/quote-generator";
+const URL = "/api/quote-generator";
 
 export async function getQuote() {
     const res = await axios.get(URL)

@@ -3,7 +3,7 @@
 import { Params } from "@/lib/types/types";
 import axios from "axios";
 
-const URL = "http://localhost:3000/api/weather";
+const URL = "/api/weather";
 
 export async function postWeatherData(formData: FormData) {
   const params: Params = {
