@@ -1,4 +1,4 @@
-'use server'
+"use server";
 
 import axios from "axios";
 import { NextRequest } from "next/server";
@@ -13,7 +13,7 @@ export async function POST(req: NextRequest) {
     country: "au",
     category: reqParams.params.category,
     pageSize: 10,
-    page: reqParams.params.page
+    page: reqParams.params.page,
   };
 
   const resp = await axios.get(api_url, { params: params });
