@@ -32,12 +32,13 @@ export default function News() {
 
   function handleCategoryChange(e: ChangeEvent<HTMLInputElement>) {
     setCurrentCategory(e.target.value);
+    setNews(null);
     handleFetchNews(e.target.value, 1);
   }
 
   function handlePagination(value: number) {
     setPage((prev) => prev + value);
-
+    setNews(null);
     handleFetchNews(currentCategory, page + value);
   }
 
@@ -48,15 +49,8 @@ export default function News() {
   if (!news) {
     return (
       <section className="flex items-center justify-center flex-col p-4">
-        <ul className="flex gap-2">
-          {categories.map((category) => (
-            <li
-              key={category}
-              className="animate-pulse w-[100px] h-[30px] bg-gray-400 rounded-md"
-            ></li>
-          ))}
-        </ul>
-        <ul className="overflow-y-scroll h-[300px] w-full my-4 flex flex-col gap-2">
+        <Filters />
+        <ul className="overflow-y-scroll h-[300px] w-5/6 my-4 flex flex-col gap-2">
           {new Array(10).fill("").map((article) => (
             <li className="animate-pulse w-full h-[20px] bg-gray-400 rounded-md"></li>
           ))}
