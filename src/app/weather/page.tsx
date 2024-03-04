@@ -49,19 +49,27 @@ export default function Weather() {
   }, []);
 
   const handleSearch = async (formData: FormData) => {
+    setData(null);
     const weatherData = await postWeatherData(formData);
 
     if (weatherData.error) {
       setError(weatherData.error);
       fetchInitialData();
     } else {
-      setError(null)
+      setError(null);
       setData(weatherData);
     }
   };
 
   if (!data) {
-    return <div>Loading...</div>;
+    return (
+      <section className="flex p-4 h-full rounded-md w-full">
+        <aside className="bg-gray-800 text-white">
+          <WeatherSearch handleSearch={handleSearch} error={error} />
+        </aside>
+        <div className="w-full h-[600px] bg-gray-400 animate-pulse rounded-md"></div>
+      </section>
+    );
   }
 
   return (
