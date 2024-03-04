@@ -1,0 +1,272 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home matches to Home snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <section
+        class="flex gap-10 p-4 flex-wrap items-center justify-center"
+      >
+        <div
+          class="ring-2 ring-black w-1/4 p-2"
+        >
+          <figure>
+            <a
+              href="/weather"
+            >
+              <img
+                alt="widget pic"
+                class="w-full h-[200px] object-cover"
+                data-nimg="1"
+                decoding="async"
+                height="1000"
+                loading="lazy"
+                src="/_next/image?url=%2Fweather.png&w=2048&q=75"
+                srcset="/_next/image?url=%2Fweather.png&w=1080&q=75 1x, /_next/image?url=%2Fweather.png&w=2048&q=75 2x"
+                style="color: transparent;"
+                width="1000"
+              />
+              <figcaption>
+                Weather
+              </figcaption>
+            </a>
+          </figure>
+        </div>
+        <div
+          class="ring-2 ring-black w-1/4 p-2"
+        >
+          <figure>
+            <a
+              href="/task-manager"
+            >
+              <img
+                alt="widget pic"
+                class="w-full h-[200px] object-cover"
+                data-nimg="1"
+                decoding="async"
+                height="1000"
+                loading="lazy"
+                src="/_next/image?url=%2Ftask-manager.png&w=2048&q=75"
+                srcset="/_next/image?url=%2Ftask-manager.png&w=1080&q=75 1x, /_next/image?url=%2Ftask-manager.png&w=2048&q=75 2x"
+                style="color: transparent;"
+                width="1000"
+              />
+              <figcaption>
+                Task-Manager
+              </figcaption>
+            </a>
+          </figure>
+        </div>
+        <div
+          class="ring-2 ring-black w-1/4 p-2"
+        >
+          <figure>
+            <a
+              href="/news"
+            >
+              <img
+                alt="widget pic"
+                class="w-full h-[200px] object-cover"
+                data-nimg="1"
+                decoding="async"
+                height="1000"
+                loading="lazy"
+                src="/_next/image?url=%2Fnews.png&w=2048&q=75"
+                srcset="/_next/image?url=%2Fnews.png&w=1080&q=75 1x, /_next/image?url=%2Fnews.png&w=2048&q=75 2x"
+                style="color: transparent;"
+                width="1000"
+              />
+              <figcaption>
+                News
+              </figcaption>
+            </a>
+          </figure>
+        </div>
+        <div
+          class="ring-2 ring-black w-1/4 p-2"
+        >
+          <figure>
+            <a
+              href="/quote-generator"
+            >
+              <img
+                alt="widget pic"
+                class="w-full h-[200px] object-cover"
+                data-nimg="1"
+                decoding="async"
+                height="1000"
+                loading="lazy"
+                src="/_next/image?url=%2Fquote.png&w=2048&q=75"
+                srcset="/_next/image?url=%2Fquote.png&w=1080&q=75 1x, /_next/image?url=%2Fquote.png&w=2048&q=75 2x"
+                style="color: transparent;"
+                width="1000"
+              />
+              <figcaption>
+                Quote-Generator
+              </figcaption>
+            </a>
+          </figure>
+        </div>
+      </section>
+    </div>
+  </body>,
+  "container": <div>
+    <section
+      class="flex gap-10 p-4 flex-wrap items-center justify-center"
+    >
+      <div
+        class="ring-2 ring-black w-1/4 p-2"
+      >
+        <figure>
+          <a
+            href="/weather"
+          >
+            <img
+              alt="widget pic"
+              class="w-full h-[200px] object-cover"
+              data-nimg="1"
+              decoding="async"
+              height="1000"
+              loading="lazy"
+              src="/_next/image?url=%2Fweather.png&w=2048&q=75"
+              srcset="/_next/image?url=%2Fweather.png&w=1080&q=75 1x, /_next/image?url=%2Fweather.png&w=2048&q=75 2x"
+              style="color: transparent;"
+              width="1000"
+            />
+            <figcaption>
+              Weather
+            </figcaption>
+          </a>
+        </figure>
+      </div>
+      <div
+        class="ring-2 ring-black w-1/4 p-2"
+      >
+        <figure>
+          <a
+            href="/task-manager"
+          >
+            <img
+              alt="widget pic"
+              class="w-full h-[200px] object-cover"
+              data-nimg="1"
+              decoding="async"
+              height="1000"
+              loading="lazy"
+              src="/_next/image?url=%2Ftask-manager.png&w=2048&q=75"
+              srcset="/_next/image?url=%2Ftask-manager.png&w=1080&q=75 1x, /_next/image?url=%2Ftask-manager.png&w=2048&q=75 2x"
+              style="color: transparent;"
+              width="1000"
+            />
+            <figcaption>
+              Task-Manager
+            </figcaption>
+          </a>
+        </figure>
+      </div>
+      <div
+        class="ring-2 ring-black w-1/4 p-2"
+      >
+        <figure>
+          <a
+            href="/news"
+          >
+            <img
+              alt="widget pic"
+              class="w-full h-[200px] object-cover"
+              data-nimg="1"
+              decoding="async"
+              height="1000"
+              loading="lazy"
+              src="/_next/image?url=%2Fnews.png&w=2048&q=75"
+              srcset="/_next/image?url=%2Fnews.png&w=1080&q=75 1x, /_next/image?url=%2Fnews.png&w=2048&q=75 2x"
+              style="color: transparent;"
+              width="1000"
+            />
+            <figcaption>
+              News
+            </figcaption>
+          </a>
+        </figure>
+      </div>
+      <div
+        class="ring-2 ring-black w-1/4 p-2"
+      >
+        <figure>
+          <a
+            href="/quote-generator"
+          >
+            <img
+              alt="widget pic"
+              class="w-full h-[200px] object-cover"
+              data-nimg="1"
+              decoding="async"
+              height="1000"
+              loading="lazy"
+              src="/_next/image?url=%2Fquote.png&w=2048&q=75"
+              srcset="/_next/image?url=%2Fquote.png&w=1080&q=75 1x, /_next/image?url=%2Fquote.png&w=2048&q=75 2x"
+              style="color: transparent;"
+              width="1000"
+            />
+            <figcaption>
+              Quote-Generator
+            </figcaption>
+          </a>
+        </figure>
+      </div>
+    </section>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
