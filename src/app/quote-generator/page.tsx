@@ -4,12 +4,14 @@ import { useEffect, useState } from "react";
 import { getQuote } from "./actions";
 import { Quote } from "@/lib/types/types";
 
+import { IoReloadCircleSharp } from "react-icons/io5";
+
 export default function QuoteGen() {
   const [quote, setQuote] = useState<Quote | null>(null);
 
   async function handleFetchQuote() {
+    setQuote(null);
     const quote = await getQuote();
-
     setQuote(quote);
   }
 
@@ -24,6 +26,9 @@ export default function QuoteGen() {
           <h3 className="sr-only">Quote of the day is loading</h3>
         </blockquote>
         <span className="w-1/5 h-[30px] bg-gray-400 rounded-md animate-pulse"></span>
+        <button type="button" className="mt-10">
+          <IoReloadCircleSharp className="size-10" />
+        </button>
       </section>
     );
   }
@@ -34,6 +39,10 @@ export default function QuoteGen() {
         `{quote?.quote}`
       </blockquote>
       <span>- {quote?.author}</span>
+
+      <button type="button" onClick={handleFetchQuote} className="mt-10">
+        <IoReloadCircleSharp className="size-10" />
+      </button>
     </section>
   );
 }
