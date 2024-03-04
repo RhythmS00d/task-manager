@@ -24,8 +24,8 @@ function Nav() {
       href: "/task-manager",
     },
     {
-      name: "Other Widgets",
-      href: "/",
+      name: "Quote Generator",
+      href: "/quote-generator",
     },
   ];
 

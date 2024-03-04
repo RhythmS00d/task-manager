@@ -1,5 +1,3 @@
-"use server";
-
 import { Params } from "@/lib/types/types";
 import axios from "axios";
 
