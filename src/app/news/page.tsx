@@ -28,13 +28,11 @@ export default function News() {
     const news = await getNews(category, page);
 
     setNews(news);
-    console.log(news);
   }
 
   function handleCategoryChange(e: ChangeEvent<HTMLInputElement>) {
     setCurrentCategory(e.target.value);
     handleFetchNews(e.target.value, 1);
-    console.log(e.target.value);
   }
 
   function handlePagination(value: number) {
@@ -48,7 +46,23 @@ export default function News() {
   }, []);
 
   if (!news) {
-    return <h1>Loading...</h1>;
+    return (
+      <section className="flex items-center justify-center flex-col p-4">
+        <ul className="flex gap-2">
+          {categories.map((category) => (
+            <li
+              key={category}
+              className="animate-pulse w-[100px] h-[30px] bg-gray-400 rounded-md"
+            ></li>
+          ))}
+        </ul>
+        <ul className="overflow-y-scroll h-[300px] w-full my-4 flex flex-col gap-2">
+          {new Array(10).fill("").map((article) => (
+            <li className="animate-pulse w-full h-[20px] bg-gray-400 rounded-md"></li>
+          ))}
+        </ul>
+      </section>
+    );
   }
 
   function Filters() {
@@ -130,9 +144,7 @@ export default function News() {
   return (
     <section className="flex items-center justify-center flex-col p-4">
       <Filters />
-      <Suspense fallback={<h1>Loading....</h1>}>
-        <RenderArticle />
-      </Suspense>
+      <RenderArticle />
     </section>
   );
 }
