@@ -63,18 +63,22 @@ export default function TaskManager() {
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <button className="task-button" type="submit">
+        <button className="task-button px-4 py-4 w-full" type="submit">
           Add Task
         </button>
       </form>
-      <ul id="task-list" className="mt-8">
+      <ul id="task-list" className="mt-8 flex flex-col items-center">
         {tasks.map((task, index) => (
-          <li key={index + 10 * 2.3} id="task" className="p-3">
-            <h1>{task.title}</h1>
-            <div className="flex flex-col gap-4">
+          <li
+            key={index + 10 * 2.3}
+            id="task"
+            className="flex flex-col gap-4 w-[150%] md:w-full"
+          >
+            <h1 className="font-semibold text-lg">{task.title}</h1>
+            <div className="flex gap-10 mt-4">
               <button
                 type="button"
-                className="task-button"
+                className="task-button px-4 py-2 w-full"
                 onClick={() => deleteTask(task.id)}
               >
                 Delete
@@ -86,7 +90,7 @@ export default function TaskManager() {
               ) : (
                 <button
                   type="button"
-                  className="task-button"
+                  className="task-button px-4 py-2 w-full"
                   onClick={() => setCompleteTask(task.id)}
                 >
                   Mark as complete

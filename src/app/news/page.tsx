@@ -50,7 +50,10 @@ export default function News() {
         <Filters />
         <ul className="overflow-y-scroll h-[300px] w-5/6 my-4 flex flex-col gap-2">
           {new Array(10).fill("").map((article, index) => (
-            <li key={article+10*index+2.3} className="animate-pulse w-full h-[20px] bg-gray-400 rounded-md"></li>
+            <li
+              key={article + 10 * index + 2.3}
+              className="animate-pulse w-full h-[20px] bg-gray-400 rounded-md"
+            ></li>
           ))}
         </ul>
       </section>
@@ -59,7 +62,7 @@ export default function News() {
 
   function Filters() {
     return (
-      <ul className="flex gap-2">
+      <ul className="flex gap-2 overflow-x-scroll w-[150%] lg:self-center lg:w-[150%] lg:flex lg:items-center lg:justify-center">
         {categories.map((category) => (
           <li key={category}>
             <input
@@ -89,8 +92,8 @@ export default function News() {
     }
 
     return (
-      <div className="p-4 w-[80%]">
-        <ul className="overflow-y-scroll h-[300px]">
+      <div className="p-4 w-[150%] mt-3">
+        <ul className="overflow-y-scroll h-[500px] md:h-[600px]">
           {news?.articles.map((article) => (
             <Link
               key={article.title}
@@ -98,7 +101,9 @@ export default function News() {
               className="hover:underline"
               target="_blank"
             >
-              <li>{article.title}</li>
+              <li className="p-4 my-2 bg-white rounded-lg shadow-md lg:max-w-[70%] lg:mx-auto">
+                {article.title}
+              </li>
             </Link>
           ))}
         </ul>

@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className + " bg-primary w-2/3 mx-auto container"}>
-        <main className="rounded-md">
+        <main className="rounded-md flex flex-col">
           <Header />
           {children}
           <Footer />

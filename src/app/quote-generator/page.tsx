@@ -34,14 +34,14 @@ export default function QuoteGen() {
   }
 
   return (
-    <section className="min-h-[60dvh] flex items-center justify-center gap-3 flex-col max-w-[80%] mx-auto">
-      <blockquote className="font-semibold italic text-2xl">
+    <section className="min-h-[60dvh] flex items-center justify-center gap-3 flex-col w-full mx-auto">
+      <blockquote className="font-semibold italic lg:text-2xl w-full text-center md:text-xl">
         `{quote?.quote}`
       </blockquote>
-      <span>- {quote?.author}</span>
+      <span className="text-sm md:text-lg lg:text-lg">- {quote?.author}</span>
 
       <button type="button" onClick={handleFetchQuote} className="mt-10">
-        <IoReloadCircleSharp className="size-10" />
+        <IoReloadCircleSharp className="size-10 md:size-12" />
       </button>
     </section>
   );

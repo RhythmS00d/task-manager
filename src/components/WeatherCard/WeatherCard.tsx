@@ -6,7 +6,6 @@ import { FaLongArrowAltDown } from "react-icons/fa";
 import { FaLongArrowAltUp } from "react-icons/fa";
 import { MdOutlineWaterDrop } from "react-icons/md";
 import { FaWind } from "react-icons/fa";
-import { Suspense } from "react";
 
 export function WeatherCard({ weatherData }: { weatherData: Weather }) {
   const images: { [key: string]: string } = {
@@ -28,7 +27,7 @@ export function WeatherCard({ weatherData }: { weatherData: Weather }) {
         width={2000}
         height={2000}
         loading="eager"
-        className="min-w-full h-[600px] opacity-85 object-cover"
+        className="min-w-full h-[400px] opacity-85 object-cover md:h-[600px]"
       />
       <ul className="absolute bottom-10 p-4 flex flex-col gap-2">
         <li className="text-4xl font-semibold flex gap-2 items-center justify-center">

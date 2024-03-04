@@ -74,7 +74,7 @@ export default function Weather() {
 
   return (
     <>
-      <section className="flex p-4 h-full rounded-md">
+      <section className="flex p-4 h-full rounded-md flex-col w-[120%] self-center md:flex-row md:w-[140%] md:mt-8 lg:w-full">
         <aside className="bg-gray-800 text-white">
           <WeatherSearch handleSearch={handleSearch} error={error} />
         </aside>
