@@ -33,26 +33,24 @@ export default function News() {
   function handleCategoryChange(e: ChangeEvent<HTMLInputElement>) {
     setCurrentCategory(e.target.value);
     setNews(null);
-    handleFetchNews(e.target.value, 1);
   }
 
   function handlePagination(value: number) {
     setPage((prev) => prev + value);
     setNews(null);
-    handleFetchNews(currentCategory, page + value);
   }
 
   useEffect(() => {
     handleFetchNews(currentCategory, page);
-  }, []);
+  }, [currentCategory, page]);
 
   if (!news) {
     return (
       <section className="flex items-center justify-center flex-col p-4">
         <Filters />
         <ul className="overflow-y-scroll h-[300px] w-5/6 my-4 flex flex-col gap-2">
-          {new Array(10).fill("").map((article) => (
-            <li className="animate-pulse w-full h-[20px] bg-gray-400 rounded-md"></li>
+          {new Array(10).fill("").map((article, index) => (
+            <li key={article+10*index+2.3} className="animate-pulse w-full h-[20px] bg-gray-400 rounded-md"></li>
           ))}
         </ul>
       </section>
