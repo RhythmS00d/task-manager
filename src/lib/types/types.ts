@@ -23,10 +23,17 @@ export type Data = {
 };
 
 export type NewsReqParams = {
+  category: string;
+  page: number | string;
+};
+
+export type NewsAPIParams = {
+  apiKey: string;
   country: string;
   category: string;
-  pageSize: number;
-};
+  pageSize: string;
+  page: string;
+}
 
 type Article = {
   title: string;
@@ -37,8 +44,10 @@ type Article = {
 
 export type NewsResp = {
   status: string;
-  totalResults: number;
-  articles: Article[];
+  totalResults?: number;
+  articles?: Article[];
+  code?: string;
+  message?: string;
 };
 
 export type Task = {

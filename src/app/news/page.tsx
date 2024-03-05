@@ -8,11 +8,14 @@ import Link from "next/link";
 
 import { IoMdArrowDropleftCircle } from "react-icons/io";
 import { IoMdArrowDroprightCircle } from "react-icons/io";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function News() {
   const [news, setNews] = useState<NewsResp | null>(null);
-  const [currentCategory, setCurrentCategory] = useState("Technology");
-  const [page, setPage] = useState(1);
+  const searchParams = useSearchParams();
+  let currentCategory = searchParams.get("category") || "Technology";
+  let page = searchParams.get("page") || 1;
+  const router = useRouter();
 
   const categories = [
     "Technology",
@@ -30,18 +33,24 @@ export default function News() {
     setNews(news);
   }
 
-  function handleCategoryChange(e: ChangeEvent<HTMLInputElement>) {
-    setCurrentCategory(e.target.value);
+  function handleCategoryChange() {
     setNews(null);
   }
 
-  function handlePagination(value: number) {
-    setPage((prev) => prev + value);
+  function handlePagination() {
     setNews(null);
   }
 
   useEffect(() => {
-    handleFetchNews(currentCategory, page);
+    const controller = new AbortController();
+    handleFetchNews(currentCategory, +page);
+
+    if (isNaN(+page)) {
+      page = 1;
+      router.push(`/news?category=${currentCategory}&page=${page}`);
+    }
+
+    return () => controller.abort();
   }, [currentCategory, page]);
 
   if (!news) {
@@ -60,79 +69,120 @@ export default function News() {
     );
   }
 
+  if (news.status === "error") {
+    const errors: { [key: string]: string } = {
+      rateLimited:
+        "You have made too many requests recently. Free users are limited to 100 requests over 24 hr period.",
+      apiKeyMissing: "Api key is missing.",
+      maximumResultsReached:
+        "You have requested too many results. Users are limited to a max of 100 results.",
+    };
+    return (
+      <section className="min-h-[40dvh] flex flex-col items-center justify-center w-[130%] self-center">
+        <h1 className="text-md font-semibold">Error occured: {news.code}</h1>
+        <p className="mt-4 text-center">
+          {errors[news.code || "maximumResultsReached"]}
+        </p>
+        <Link
+          href={`?category=${currentCategory}&page=1`}
+          className="mt-4 task-button px-2 py-4"
+        >
+          Go back to {currentCategory}'s first page
+        </Link>
+        <Link href={`/`} className="mt-4 task-button px-4 py-4">
+          Home
+        </Link>
+      </section>
+    );
+  }
+
   function Filters() {
     return (
-      <ul className="flex gap-2 overflow-x-scroll w-[150%] lg:self-center lg:w-[150%] lg:flex lg:items-center lg:justify-center">
+      <ul className="flex gap-2 overflow-x-scroll w-[150%] p-2 lg:self-center lg:w-[150%] lg:flex lg:items-center lg:justify-center">
         {categories.map((category) => (
-          <li key={category}>
-            <input
-              type="radio"
-              name="category"
-              value={category}
-              id={category}
-              checked={currentCategory === category}
-              onChange={(e) => handleCategoryChange(e)}
-              className="hidden"
-            />
-            <label
-              htmlFor={category}
-              className="category rounded-md hover:bg-gray-400"
+          <Link
+            href={`?category=${category.toLowerCase()}&page=1`}
+            onClick={handleCategoryChange}
+            key={category}
+          >
+            <li
+              className={`category rounded-md hover:bg-gray-400 ${
+                currentCategory.toLowerCase() === category.toLowerCase()
+                  ? "ring-2 ring-blue-500"
+                  : ""
+              }`}
             >
               {category}
-            </label>
-          </li>
+            </li>
+          </Link>
         ))}
       </ul>
     );
   }
 
   function RenderArticle() {
-    if (news?.articles.length === 0) {
-      return <h1 className="py-4 mt-4 text-lg">No articles found</h1>;
+    if (news?.articles?.length === 0) {
+      if (+page === 1)
+        return (
+          <h1 className="py-4 mt-4 text-lg">
+            No articles found! Change category.
+          </h1>
+        );
+      else if (+page > 1) {
+        return (
+          <section>
+            {/* <h1>{news}</h1> */}
+            <span>
+              If not redirected,{" "}
+              <Link
+                href={`?category=${currentCategory}&page=${Math.ceil(
+                  news.totalResults ?? 0 * 0.1
+                )}`}
+              >
+                click here
+              </Link>
+            </span>
+          </section>
+        );
+      }
     }
 
     return (
-      <div className="p-4 w-[150%] mt-3">
-        <ul className="overflow-y-scroll h-[500px] md:h-[600px]">
-          {news?.articles.map((article) => (
+      <div className="p-4 w-[150%] mt-3 lg:w-full">
+        <ul className="overflow-y-scroll h-[500px] md:h-fit">
+          {news?.articles?.map((article) => (
             <Link
               key={article.title}
               href={article.url}
               className="hover:underline"
               target="_blank"
             >
-              <li className="p-4 my-2 bg-white rounded-lg shadow-md lg:max-w-[70%] lg:mx-auto">
+              <li className="p-4 my-2 bg-white rounded-lg shadow-md lg:w-full lg:mx-auto">
                 {article.title}
               </li>
             </Link>
           ))}
         </ul>
         <div className="flex gap-2 items-center justify-center mt-10">
-          <button
-            className="size-10"
-            type="button"
-            onClick={() => handlePagination(-1)}
-            disabled={page === 1}
-          >
-            <IoMdArrowDropleftCircle
-              color={page === 1 ? "gray" : ""}
+          {+page > 1 && (
+            <Link
+              href={`?category=${currentCategory}&page=${+page - 1}`}
               className="size-10"
-            />
-          </button>
+              onClick={handlePagination}
+            >
+              <IoMdArrowDropleftCircle className="size-10" />
+            </Link>
+          )}
           {page}
-          <button
-            type="button"
-            className="size-10"
-            disabled={page === Math.ceil((news?.totalResults ?? 0) / 10)}
-            onClick={() => handlePagination(1)}
-          >
-            <IoMdArrowDroprightCircle
+          {+page < Math.ceil((news?.totalResults ?? 0) * 0.1) && (
+            <Link
+              href={`?category=${currentCategory}&page=${+page + 1}`}
               className="size-10"
-              color={
-                page === Math.ceil((news?.totalResults ?? 0) / 10) ? "gray" : ""
-              }
-            />
-          </button>
+              onClick={handlePagination}
+            >
+              <IoMdArrowDroprightCircle className="size-10" />
+            </Link>
+          )}
         </div>
       </div>
     );
