@@ -46,7 +46,6 @@ export default function News() {
     handleFetchNews(currentCategory, +page);
 
     if (isNaN(+page)) {
-      page = 1;
       router.push(`/news?category=${currentCategory}&page=${page}`);
     }
 
@@ -87,7 +86,7 @@ export default function News() {
           href={`?category=${currentCategory}&page=1`}
           className="mt-4 task-button px-2 py-4"
         >
-          Go back to {currentCategory}'s first page
+          Go back to {currentCategory} first page
         </Link>
         <Link href={`/`} className="mt-4 task-button px-4 py-4">
           Home
