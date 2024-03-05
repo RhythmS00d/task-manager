@@ -50,21 +50,23 @@ export default function News() {
     }
 
     return () => controller.abort();
-  }, [currentCategory, page]);
+  }, [currentCategory, page, router]);
 
   if (!news) {
     return (
-      <section className="flex items-center justify-center flex-col p-4">
-        <Filters />
-        <ul className="overflow-y-scroll h-[300px] w-5/6 my-4 flex flex-col gap-2">
-          {new Array(10).fill("").map((article, index) => (
-            <li
-              key={article + 10 * index + 2.3}
-              className="animate-pulse w-full h-[20px] bg-gray-400 rounded-md"
-            ></li>
-          ))}
-        </ul>
-      </section>
+      <Suspense fallback={<h1>Loading...</h1>}>
+        <section className="flex items-center justify-center flex-col p-4">
+          <Filters />
+          <ul className="overflow-y-scroll h-[300px] w-5/6 my-4 flex flex-col gap-2">
+            {new Array(10).fill("").map((article, index) => (
+              <li
+                key={article + 10 * index + 2.3}
+                className="animate-pulse w-full h-[20px] bg-gray-400 rounded-md"
+              ></li>
+            ))}
+          </ul>
+        </section>
+      </Suspense>
     );
   }
 
@@ -77,21 +79,23 @@ export default function News() {
         "You have requested too many results. Users are limited to a max of 100 results.",
     };
     return (
-      <section className="min-h-[40dvh] flex flex-col items-center justify-center w-[130%] self-center">
-        <h1 className="text-md font-semibold">Error occured: {news.code}</h1>
-        <p className="mt-4 text-center">
-          {errors[news.code || "maximumResultsReached"]}
-        </p>
-        <Link
-          href={`?category=${currentCategory}&page=1`}
-          className="mt-4 task-button px-2 py-4"
-        >
-          Go back to {currentCategory} first page
-        </Link>
-        <Link href={`/`} className="mt-4 task-button px-4 py-4">
-          Home
-        </Link>
-      </section>
+      <Suspense fallback={<h1>Loading...</h1>}>
+        <section className="min-h-[40dvh] flex flex-col items-center justify-center w-[130%] self-center">
+          <h1 className="text-md font-semibold">Error occured: {news.code}</h1>
+          <p className="mt-4 text-center">
+            {errors[news.code || "maximumResultsReached"]}
+          </p>
+          <Link
+            href={`?category=${currentCategory}&page=1`}
+            className="mt-4 task-button px-2 py-4"
+          >
+            Go back to {currentCategory} first page
+          </Link>
+          <Link href={`/`} className="mt-4 task-button px-4 py-4">
+            Home
+          </Link>
+        </section>
+      </Suspense>
     );
   }
 
@@ -130,15 +134,13 @@ export default function News() {
       else if (+page > 1) {
         return (
           <section>
-            {/* <h1>{news}</h1> */}
             <span>
-              If not redirected,{" "}
               <Link
                 href={`?category=${currentCategory}&page=${Math.ceil(
                   news.totalResults ?? 0 * 0.1
                 )}`}
               >
-                click here
+                Click here to go back,
               </Link>
             </span>
           </section>
@@ -189,8 +191,8 @@ export default function News() {
 
   return (
     <section className="flex items-center justify-center flex-col p-4">
-      <Filters />
-      <RenderArticle />
-    </section>
+              <Filters />
+              <RenderArticle />
+          </section>
   );
 }

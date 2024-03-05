@@ -7,6 +7,7 @@ const inter = Inter({ subsets: ["latin"] });
 //components import
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Task Dashboard",
@@ -23,7 +24,7 @@ export default function RootLayout({
       <body className={inter.className + " bg-primary w-2/3 mx-auto container"}>
         <main className="rounded-md flex flex-col">
           <Header />
-          {children}
+          <Suspense fallback={<h1>Loading...</h1>}>{children}</Suspense>
           <Footer />
         </main>
       </body>
